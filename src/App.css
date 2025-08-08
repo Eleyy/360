@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+/* Layout styles for the 360 viewer and minimap */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 320px;
+  background-color: #e0e0e0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 1px solid #ddd;
+  min-height: 100vh;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.sidebar select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sidebar div {
+  font-size: 14px;
+  color: #666;
+}
