@@ -6,6 +6,7 @@ import Papa from 'papaparse';
 import MiniMap from './MiniMap';
 import Compass from './Compass';
 import './App.css';
+import { normalizeHeading } from './utils/normalizeHeading';
 
 interface PanoRec {
   id: number;
@@ -56,7 +57,8 @@ export default function App() {
         const position = viewerRef.current.getPosition();
         // Convert yaw to heading (yaw is in radians, convert to degrees)
         // Add the northing offset to sync with the initial rotation
-        const newHeading = ((position.yaw * 180 / Math.PI) + list[idx].northing) % 360;
+        const rawHeading = (position.yaw * 180 / Math.PI) + list[idx].northing;
+        const newHeading = normalizeHeading(rawHeading);
         setHeading(newHeading);
       }
     }, 100); // Update every 100ms
